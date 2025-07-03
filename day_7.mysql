@@ -1,0 +1,43 @@
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    DepartmentID INT,
+    Salary DECIMAL(10, 2)
+);
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DeptName VARCHAR(50)
+);
+
+
+CREATE VIEW HighSalaryEmployees AS
+SELECT 
+    e.Name AS EmployeeName,
+    d.DeptName AS Department,
+    e.Salary
+FROM 
+    Employees e
+JOIN 
+    Departments d ON e.DepartmentID = d.DepartmentID
+WHERE 
+    e.Salary > 50000;
+CREATE VIEW HighSalaryEmployees AS
+SELECT 
+    e.Name AS EmployeeName,
+    d.DeptName AS Department,
+    e.Salary
+FROM 
+    Employees e
+JOIN 
+    Departments d ON e.DepartmentID = d.DepartmentID
+WHERE 
+    e.Salary > 50000;
+Use Views for Abstraction and Security
+CREATE VIEW EmployeeDirectory AS
+SELECT 
+    Name,
+    DepartmentID
+FROM 
+    Employees;
+SELECT * FROM EmployeeDirectory;
